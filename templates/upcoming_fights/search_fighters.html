@@ -1,0 +1,48 @@
+{% extends "upcoming_fights/base.html" %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'upcoming_fights/style.css' %}">
+
+{% block body_block %}
+    {% if user.is_authenticated %}
+        
+        <form>
+            <div class="input-group">
+                <input type="text" class="form-control rounded col-sm-1" placeholder="Search" 
+                aria-label="Search" aria-describedby="search-addon" name="suggestion" value="" id="suggestion"/>
+                <button type="submit" for="suggestion" class="btn btn-outline-primary" id="search">search</button>
+            </div>
+        </form>
+        
+        <hr>
+        <ul class="list-group">
+            {% if fighters %}
+                {% for f in fighters %}
+                    <li class="list-group-item">
+
+                        {% if f in following %}
+                            <button id="unfollow-btn-{{ f.fighter_id }}" data-fid="{{ f.fighter_id }}"
+                                class="unfollow-btn btn btn-danger btn-sm" type="button" style="color:white">
+                                unfollow
+                            </button>                            
+                        {% else %}
+                            <button id="follow-btn-{{ f.fighter_id }}" data-fid="{{ f.fighter_id }}"
+                                class="follow-btn btn btn-info btn-sm" type="button" style="color:white">
+                                follow
+                            </button>
+                        {% endif %}
+                        <a href="https://www.sherdog.com/fighter/{{ f.fighter_id }}" target="_blank">{{ f.name }}</a>   
+
+                    </li>
+                {% endfor %}
+            {% else %}
+                <li> <strong>
+                    {% if request.suggestion != "" %}
+                        No fighters match results.
+                    {% else %}
+                        There are no fighters present.
+                    {% endif %}
+                </strong></li>
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endblock %}

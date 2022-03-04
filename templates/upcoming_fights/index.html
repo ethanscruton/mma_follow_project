@@ -1,0 +1,14 @@
+{% extends "upcoming_fights/base.html" %}
+{% block body_block %}
+    <h1> Welcome {{user.username}} </h1>
+    {% if user.is_authenticated %}
+        <p> You can follow fighters by searching their name above. </p>
+        <p> You will be e-mailed whenever a fighter you follow has a new fight scheduled.</p>
+        <p> You will also be e-mailed whenever changes are made to a scheduled fight, such as the date or their opponent. </p>
+        
+    {% else %}
+        <p> On this site, you can follow MMA fighters and receive e-mail updates whenever one of your followed fighters has a new fight scheduled. </p>
+        <p> To access these features, please register/login above.</p>
+    {% endif %}
+        
+{% endblock %}

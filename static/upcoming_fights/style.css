@@ -1,0 +1,12 @@
+.nav-item:hover {
+    font-weight: bold;
+}
+
+.follow-btn:hover {
+    transform: scale(1.1)
+}
+
+.unfollow-btn:hover {
+    transform: scale(1.1)
+}
+

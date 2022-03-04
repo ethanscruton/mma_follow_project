@@ -1,0 +1,35 @@
+{% load static %}
+<script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js">
+</script>
+<script src="{% static "js/upcoming-fights-ajax.js" %}"></script>
+
+{% if user.is_authenticated %}
+    <ul>
+        {% if fighters %}
+            {% for f in fighters %}
+                <li>
+                    <a href="https://www.tapology.com/fightcenter/fighters/{{ f.fighter_id }}" target="_blank">{{ f.name }}</a>   
+
+                    <div>
+                        {% if f in following %}
+                            <button id="unfollow-btn-{{ f.fighter_id }}" data-fid="{{ f.fighter_id }}"
+                                class="unfollow-btn" type="button">
+                                unfollow
+                            </button>                            
+                        {% else %}
+                            <button id="follow-btn-{{ f.fighter_id }}" data-fid="{{ f.fighter_id }}"
+                                class="follow-btn" type="button">
+                                follow
+                            </button>
+                        {% endif %}
+                    </div>
+
+                </li>
+            {% endfor %}
+        {% else %}
+            <li> <strong>There are no fighters present.</strong></li>
+        {% endif %}
+    </ul>
+{% endif %}
+

@@ -1,0 +1,46 @@
+{% extends "upcoming_fights/base.html" %}
+
+{% block body_block %}
+    <table class="table">
+        <thead class = "table-dark">
+            <tr>
+                <th scope="col" style="width: 5%"></th>
+                <th scope="col">Fighter</th>
+                <th scope="col">Opponent</th>
+                <th scope="col">Date</th>
+                <th scope="col">Promotion</th>
+                <th scope="col">Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for f in followed_fighters %}
+                <tr>
+                    <td>
+                        <button id="unfollow-btn-{{ f.fighter_id }}" data-fid="{{ f.fighter_id }}"
+                        class="unfollow-btn btn btn-danger btn-sm" type="button">
+                        unfollow
+                        </button>
+                    </td>
+                    <td>
+                        <a href="https://www.sherdog.com/fighter/{{ f.fighter_id }}" target="_blank">{{ f.name }}</a>
+                    </td>
+                    {% if f.upcoming_fight %}
+                        {% for u in upcoming_fights %}
+                            {% if u.fighter == f %}
+                                <td><a href="https://www.sherdog.com/fighter/{{ u.opponent.fighter_id }}" target="_blank">{{ u.opponent.name }}</a></td>
+                                <td>{{ u.date }}</td>
+                                <td>{{ u.promotion }}</td>    
+                                <td>{{ u.location }}                        
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody
+    </table>
+{% endblock %}
