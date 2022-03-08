@@ -34,7 +34,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://mma-project.herokuapp.com/']
+ALLOWED_HOSTS = ['mma-project.herokuapp.com']
 
 
 # Application definition
