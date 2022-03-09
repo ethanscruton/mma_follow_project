@@ -29,7 +29,7 @@ def followed_fighters(request):
 def get_fighter_list(max_results=0, contains=''):
     fighter_list = []
     if contains:
-        fighter_list = Fighter.objects.filter(name__contains=contains)
+        fighter_list = Fighter.objects.filter(name__icontains=contains)
     
     if max_results > 0:
         if len(fighter_list) > max_results:
