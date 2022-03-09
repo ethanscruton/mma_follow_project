@@ -18,7 +18,7 @@ class Fighter(models.Model):
     name = models.CharField(max_length=256)
     nickname = models.CharField(max_length=256, default="")
     height = models.CharField(max_length=64)
-    weight_class = models.CharField(max_length=32)
+    weight_class = models.CharField(max_length=128)
     association = models.CharField(max_length=256, default="")
     country = models.CharField(max_length=64, default="")
     upcoming_fight = models.BooleanField(default=False)

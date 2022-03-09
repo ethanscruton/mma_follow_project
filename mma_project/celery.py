@@ -1,4 +1,5 @@
 import os
+from decouple import config
 
 from celery import Celery
 
@@ -16,7 +17,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 # Load task modules from all registered Django apps.
 app.autodiscover_tasks()
 
-app.conf.update(BROKER_URL=os.environ['REDIS_URL'])
+app.conf.update(BROKER_URL=config('REDIS_URL'))
 
 
 @app.task(bind=True)
