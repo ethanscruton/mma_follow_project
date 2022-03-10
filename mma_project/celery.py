@@ -1,8 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 import os
+import django
 
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mma_project.settings')
+django.setup()
 
 from decouple import config
 from celery import Celery
