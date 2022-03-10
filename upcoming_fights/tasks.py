@@ -5,8 +5,7 @@ from celery.schedules import crontab
 
 
 app = celery.Celery('upcoming_fights')
-app.conf.update(broker_url=config('REDIS_URL'),
-                results_backend=config('REDIS_URL'))
+app.conf.update(BROKER_URL=config('REDIS_URL'))
 
 @app.task
 def add(x,y):
