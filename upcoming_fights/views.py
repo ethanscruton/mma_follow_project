@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from upcoming_fights.models import Fighter, Follow, UpcomingFight
 from django.template import RequestContext
 from django.views.generic import ListView
-from .tasks import sleepy
 
 
 
