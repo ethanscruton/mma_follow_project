@@ -1,20 +1,11 @@
-import os
-
-# Set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mma_project.settings')
-
 from .models import Follow, Fighter
 from decouple import config
-from celery import shared_task
+from mma_project.celery import app
 import celery
 
 from celery.schedules import crontab
 
-
-app = celery.Celery('upcoming_fights')
-app.conf.update(BROKER_URL=config('REDIS_URL'))
-
-@shared_task
+@app.task
 def add(x,y):
     return x + y
 
