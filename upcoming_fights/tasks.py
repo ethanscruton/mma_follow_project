@@ -1,8 +1,11 @@
-from celery import shared_task
-from time import sleep
+import os
+from decouple import config
+import celery
 
-@shared_task
-def sleepy(duration):
-    sleep(duration)
-    return None
+app = celery.Celery('upcoming_fights')
+app.conf.update(BROKER_URL=config('REDIS_URL'),
+                CELERY_RESULT_BACKEND=config('REDIS_URL'))
 
+@app.task
+def add(x, y):
+    return x + y

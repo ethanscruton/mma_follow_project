@@ -1,3 +1,4 @@
+'''
 import os
 from decouple import config
 
@@ -27,4 +28,4 @@ def debug_task(self):
 @app.task
 def add(x, y):
     return x + y
-
+'''
