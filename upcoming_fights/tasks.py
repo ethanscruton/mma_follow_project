@@ -9,7 +9,7 @@ from celery.schedules import crontab
 
 @app.on_after_configure.connect
 def setup_periodic_tasks(sender, **kwargs):
-    sender.add_periodic_task(30.0, populate_followed_upcoming_fights.s())
+    sender.add_periodic_task(1800.0, populate_followed_upcoming_fights.s())
 
 @app.task
 def populate_followed_upcoming_fights():
