@@ -1,7 +1,8 @@
 {% extends "upcoming_fights/base.html" %}
 
 {% block body_block %}
-    <table class="table">
+    <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+    <table class="table sortable">
         <thead class = "table-dark">
             <tr>
                 <th scope="col" style="width: 5%"></th>
@@ -28,7 +29,7 @@
                         {% for u in upcoming_fights %}
                             {% if u.fighter == f %}
                                 <td><a href="https://www.sherdog.com/fighter/{{ u.opponent.fighter_id }}" target="_blank">{{ u.opponent.name }}</a></td>
-                                <td>{{ u.date }}</td>
+                                <td>{{ u.date|date:"m/d/y" }}</td>
                                 <td>{{ u.promotion }}</td>    
                                 <td>{{ u.location }}                        
                             {% endif %}
@@ -44,3 +45,4 @@
         </tbody
     </table>
 {% endblock %}
+

@@ -4,6 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.mail import send_mail
+from datetime import datetime
 
 class UserProfile(models.Model):
 
@@ -57,6 +58,8 @@ class Fighter(models.Model):
             fight_date = fight_date_split[0]
             for word in fight_date_split[1:3]:
                 fight_date += " " + word
+            fight_date = datetime.strptime(fight_date, '%B %d, %Y')
+            fight_date = fight_date.date()
             fight_dict['date'] = fight_date
 
             # promotion
@@ -243,7 +246,7 @@ class UpcomingFight(models.Model):
 
     fighter = models.OneToOneField(Fighter, related_name='upcoming_fighter', on_delete=models.PROTECT)
     opponent = models.OneToOneField(Fighter, related_name='upcoming_opponent', on_delete=models.PROTECT)
-    date = models.CharField(max_length=64)
+    date = models.DateField()
     promotion = models.CharField(max_length=128)
     location = models.CharField(max_length=128)
 
