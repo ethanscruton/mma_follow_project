@@ -1,6 +1,8 @@
+from mma_project.celery import app
+
 from .models import Follow, Fighter
 from decouple import config
-from mma_project.celery import app
+
 import celery
 
 from celery.schedules import crontab
