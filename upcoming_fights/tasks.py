@@ -1,13 +1,13 @@
 from .models import Follow, Fighter
 from decouple import config
-import celery
+from celery import shared_task
 from celery.schedules import crontab
 
 
-app = celery.Celery('upcoming_fights')
-app.conf.update(BROKER_URL=config('REDIS_URL'))
+#app = celery.Celery('upcoming_fights')
+#app.conf.update(BROKER_URL=config('REDIS_URL'))
 
-@app.task
+@shared_task
 def add(x,y):
     return x + y
 
