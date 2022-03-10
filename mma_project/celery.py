@@ -1,3 +1,4 @@
+from __future__ import absolute_import, unicode_literals
 import os
 from decouple import config
 from celery import Celery
@@ -16,3 +17,7 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.autodiscover_tasks()
 app.conf.update(BROKER_URL=config('REDIS_URL'))
+
+@app.task
+def add(x, y):
+    return x + y
