@@ -13,7 +13,7 @@ def setup_periodic_tasks(sender, **kwargs):
 
 @app.task
 def populate_followed_upcoming_fights():
-    all_followed_fighters = Fighter.objects.values_list('Fighter', flat=True).distinct()
+    all_followed_fighters = Follow.objects.values_list('Fighter', flat=True).distinct()
     for fighter in all_followed_fighters:
         fighter.find_upcoming_fight_and_email_results()
     
