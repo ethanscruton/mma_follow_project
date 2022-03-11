@@ -10,7 +10,7 @@
                 <th scope="col">Opponent</th>
                 <th scope="col">Date</th>
                 <th scope="col">Promotion</th>
-                <th scope="col">Location</th>
+                <!--<th scope="col">Location</th>-->
             </tr>
         </thead>
         <tbody>
@@ -31,14 +31,14 @@
                                 <td><a href="https://www.sherdog.com/fighter/{{ u.opponent.fighter_id }}" target="_blank">{{ u.opponent.name }}</a></td>
                                 <td>{{ u.date|date:"m/d/y" }}</td>
                                 <td>{{ u.promotion }}</td>    
-                                <td>{{ u.location }}                        
+                                <!--<td>{{ u.location }}  -->                      
                             {% endif %}
                         {% endfor %}
                     {% else %}
                         <td></td>
                         <td style="color:white">01/01/28</td>
                         <td></td>
-                        <td></td>
+                        <!--<td></td>-->
                     {% endif %}
                 </tr>
             {% endfor %}
