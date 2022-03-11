@@ -230,7 +230,8 @@ class Fighter(models.Model):
                 fight.opponent.name, fight.date, fight.promotion, fight.location
             )
             
-            send_mail(subject, message, email_from, recipient_list)
+            for recipient in recipient_list:
+                send_mail(subject, message, email_from, [recipient])
         
         return
 
