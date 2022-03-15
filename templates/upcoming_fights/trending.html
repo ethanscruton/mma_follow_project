@@ -1,0 +1,46 @@
+{% extends "upcoming_fights/base.html" %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'upcoming_fights/style.css' %}">
+
+{% block body_block %}
+    {% if user.is_authenticated %}
+        <hr>
+        <table class="table">
+            <thead class = "table-dark">
+                <tr>
+                    <th scope="col" style="width: 5%"></th>
+                    <th scope="col">Fighter</th>
+                    <th scope="col" style="width: 5%">Followers</th>
+                    <th scope="col">Weight Class</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Association</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for f in fighters %}
+                    <tr>
+                        <td>
+                            {% if f in following %}
+                                <button id="unfollow-btn-{{ f.fighter_id }}" data-fid="{{ f.fighter_id }}"
+                                    class="unfollow-btn btn btn-danger btn-sm" type="button" style="color:white">
+                                    unfollow
+                                </button>                            
+                            {% else %}
+                                <button id="follow-btn-{{ f.fighter_id }}" data-fid="{{ f.fighter_id }}"
+                                    class="follow-btn btn btn-info btn-sm" type="button" style="color:white">
+                                    follow
+                                </button>
+                            {% endif %}
+                        <td>
+                            <a href="https://www.sherdog.com/fighter/{{ f.fighter_id }}" target="_blank">{{ f.name }}</a>
+                        </td>
+                        <td>{{ f.followers }}</td>
+                        <td>{{ f.weight_class }}</td>
+                        <td>{{ f.country }}</td>
+                        <td>{{ f.association }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody
+        </table>
+    {% endif %}
+{% endblock %}
