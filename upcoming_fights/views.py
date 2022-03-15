@@ -54,6 +54,16 @@ def search_fighters(request):
 
     return render(request, 'upcoming_fights/search_fighters2.html', {'fighters': fighter_list, 'following': followed_fighters})
 
+def trending_fighters(request):
+    fighter_list = Fighter.objects.filter(followers__gte=1).order_by('-followers')[:100]
+    
+    followed_objects = Follow.objects.filter(user = request.user)
+    followed_fighters = []
+    for object in followed_objects:
+        followed_fighters.append(object.fighter)
+    
+    return render(request, 'upcoming_fights/trending.html', {'fighters': fighter_list, 'following': followed_fighters})
+
 
 @login_required
 def follow_fighter(request):
@@ -68,6 +78,8 @@ def follow_fighter(request):
             if fighter.is_first_follow():
                 fighter.new_follow_find_upcoming_fight()
             Follow.objects.get_or_create(user = request.user, fighter = fighter)
+            fighter.followers += 1
+            fighter.save()
 
 
     return HttpResponse()
@@ -84,5 +96,7 @@ def unfollow_fighter(request):
         if fighter:
             follow = Follow.objects.get(user = request.user, fighter = fighter)
             follow.delete()
+            fighter.followers -= 1
+            fighter.save()
 
     return HttpResponse()

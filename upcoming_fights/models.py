@@ -23,6 +23,7 @@ class Fighter(models.Model):
     association = models.CharField(max_length=256, default="")
     country = models.CharField(max_length=64, default="")
     upcoming_fight = models.BooleanField(default=False)
+    followers = models.IntegerField(default = 0)
 
     def __str__(self):
         return self.name
