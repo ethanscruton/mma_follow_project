@@ -186,7 +186,14 @@ class Fighter(models.Model):
                 )
 
                 self.email_new_fight(fight)
-            return
+        else:
+            # delete fight if it no longer exists
+            try:
+                fight = UpcomingFight.objects.get(fighter=self)
+                fight.delete
+            except:
+                return
+        return
 
     def email_fight_changes(self, fight, fight_differences):
         subject = self.name + " Fight Changed"
