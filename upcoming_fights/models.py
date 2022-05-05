@@ -190,7 +190,7 @@ class Fighter(models.Model):
             # delete fight if it no longer exists
             try:
                 fight = UpcomingFight.objects.get(fighter=self)
-                fight.delete
+                fight.delete()
             except:
                 return
         return
