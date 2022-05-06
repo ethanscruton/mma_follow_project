@@ -17,6 +17,12 @@ I encountered many challenges while building this site and I learned a great dea
 * [JQuery](https://jquery.com/)
 * [Heroku](https://www.heroku.com)
 
+## Python Packages Used
+
+* [Celery](https://docs.celeryq.dev/en/stable/getting-started/introduction.html): for task queue
+* [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/): for scraping web for fight data
+* [django-registration-redux](https://django-registration-redux.readthedocs.io/en/latest/): for user registration
+
 ## Website Features
 
 ### Homepage (logged out)
