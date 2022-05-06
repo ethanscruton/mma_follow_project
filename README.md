@@ -8,7 +8,14 @@ A site where you can create an account and follow any Mixed Martial Arts (MMA) f
 
 As an avid UFC fan, I constantly found myself wasting an immense amount of time searching the internet for when new fights were being scheduled. I started brainstorming solutions to this problem and I finally settled on building a website where the news would be brought to me, instead of me searching for it.
 
-I encountered many challenges while building this site; I learned a great deal about software/website development when overcoming the challenges. This project was by far the biggest I had ever undertaken. It was satisfying to be able to take an idea I had and build something at this scale that I am proud of.
+I encountered many challenges while building this site and I learned a great deal about software/website development while overcoming these challenges. This project was by far the biggest I had ever undertaken. It was satisfying to be able to take an idea I had and build something at this scale that I am proud of.
+
+## Built With
+
+* [Django](https://www.djangoproject.com/)
+* [Bootstrap](https://getbootstrap.com/)
+* [JQuery](https://jquery.com/)
+* [Heroku](https://www.heroku.com)
 
 ## Website Features
 
