@@ -2,7 +2,7 @@
 
 ## Description
 
-A site where you can create an account and follow any Mixed Martial Arts (MMA) fighter. You receive email notifications whenever a fighter you follow has a new fight scheduled or has a scheduled fight changed.
+A site where users can create an account and follow any UFC fighter. Users receive email notifications whenever a fighter they follow has a new fight scheduled or has a scheduled fight changed.
 
 ## Background
 
