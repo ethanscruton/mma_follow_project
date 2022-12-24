@@ -1,6 +1,6 @@
 # [mmafollow.com](https://www.mmafollow.com)
 
-## Short Description
+## Description
 
 A site where you can create an account and follow any Mixed Martial Arts (MMA) fighter. You receive email notifications whenever a fighter you follow has a new fight scheduled or has a scheduled fight changed.
 
@@ -25,6 +25,39 @@ I encountered many challenges while building this site and I learned a great dea
 
 ## Website Features
 
+### Search Fighters
+First of three ways the user can find fighters to follow
+
+![search](https://user-images.githubusercontent.com/67564744/167144808-6729c482-434e-4bd2-9e09-ce97aaaeedd1.png)
+---
+### Trending
+The second way a user can find fighters to follow. The trending page is a list of the most followed fighters by other users.
+
+![trending](https://user-images.githubusercontent.com/67564744/167145006-c5451319-d9eb-4ef1-8ae3-e17733290d7b.png)
+---
+### Rankings
+The third way a user can find fighters to follow. Automatically updates to the current official UFC rankings for fighters.
+
+![rankings](https://user-images.githubusercontent.com/67564744/209449956-08da69a2-5082-477e-9ca4-72e92e423c5c.png)
+
+---
+### Following (unsorted)
+A list of all fighters the user is following. The user can sort the list by clicking the table headers.
+
+![following unsorted](https://user-images.githubusercontent.com/67564744/167144900-478d813e-b565-413a-abde-d46b22cc2fa4.png)
+---
+### Following (sorted by upcoming fight date)
+
+![following sorted](https://user-images.githubusercontent.com/67564744/167144967-55dc1e7b-1360-4824-b3ae-cc9176786b1e.png)
+---
+### E-mail Notification (fight scheduled)
+
+![email fight scheduled](https://user-images.githubusercontent.com/67564744/167158700-122b3a5f-5369-4fd7-8322-bdab641fc107.png)
+---
+### E-mail Notification (fight changed)
+
+![email fight changed](https://user-images.githubusercontent.com/67564744/167158881-11df9d47-90a6-46e0-bf0b-849b85e07b6a.png)
+---
 ### Homepage (logged out)
 
 ![homepage logged out](https://user-images.githubusercontent.com/67564744/167144231-a5e89579-bcac-47b7-aa42-4ae0175974f0.png)
@@ -41,30 +74,4 @@ I encountered many challenges while building this site and I learned a great dea
 
 ![login](https://user-images.githubusercontent.com/67564744/167144590-ca14a947-1d2c-413b-8c02-5dbb8bebfe6e.png)
 ---
-### Search Fighters
-One of the two ways the user can find fighters to follow. The other way is through the trending page.
 
-![search](https://user-images.githubusercontent.com/67564744/167144808-6729c482-434e-4bd2-9e09-ce97aaaeedd1.png)
----
-### Following (unsorted)
-A list of all fighters the user is following. The user can sort the list by clicking the table headers.
-
-![following unsorted](https://user-images.githubusercontent.com/67564744/167144900-478d813e-b565-413a-abde-d46b22cc2fa4.png)
----
-### Following (sorted by upcoming fight date)
-
-![following sorted](https://user-images.githubusercontent.com/67564744/167144967-55dc1e7b-1360-4824-b3ae-cc9176786b1e.png)
----
-### Trending
-The second way a user can find fighters to follow. The trending page is a list of the most followed fighters by other users.
-
-![trending](https://user-images.githubusercontent.com/67564744/167145006-c5451319-d9eb-4ef1-8ae3-e17733290d7b.png)
----
-### E-mail Notification (fight scheduled)
-
-![email fight scheduled](https://user-images.githubusercontent.com/67564744/167158700-122b3a5f-5369-4fd7-8322-bdab641fc107.png)
----
-### E-mail Notification (fight changed)
-
-![email fight changed](https://user-images.githubusercontent.com/67564744/167158881-11df9d47-90a6-46e0-bf0b-849b85e07b6a.png)
----
