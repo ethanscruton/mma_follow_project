@@ -19,7 +19,7 @@ import dj_database_url
 #environ.Env.read_env()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -163,6 +163,12 @@ EMAIL_HOST_USER = config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 # Celery settings
-CELERY_BROKER_URL = config('REDIS_URL')
-#CELERY_ACCEPT_CONTENT = ['json']
-#CELERY_TASK_SERIALIZER = 'json'
+CELERY_BROKER_URL = config('CLOUDAMQP_URL')
+broker_url = os.environ.get('CLOUDAMQP_URL')
+broker_pool_limit = 1 
+broker_heartbeat = None 
+broker_connection_timeout = 30 
+result_backend = None 
+event_queue_expires = 60 
+worker_prefetch_multiplier = 1 
+worker_concurrency = 50 
