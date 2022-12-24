@@ -12,7 +12,6 @@ $('.unfollow-btn').click(function(){
     fid = $(this).attr('data-fid');
     attr_id = '#unfollow-btn-'.concat(fid);
     $.get('/upcoming-fights/unfollow/', {fighter_id: fid})
-
     location.reload()
 });
 

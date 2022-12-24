@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from upcoming_fights.models import Fighter, Follow, UpcomingFight
+from upcoming_fights.models import Fighter, Follow, UpcomingFight, UpcomingFightDataScraper, FighterRanking, FighterRankingList, UserProfile
 from django.template import RequestContext
 from django.views.generic import ListView
 
@@ -64,9 +64,24 @@ def trending_fighters(request):
     
     return render(request, 'upcoming_fights/trending.html', {'fighters': fighter_list, 'following': followed_fighters})
 
+def fighter_rankings(request):
+    all_ranking_lists = FighterRankingList.objects.all()
+    ranking_list = []
+    
+    for list in all_ranking_lists:
+        ranking_list.append(list.get_ordered_ranking_list())
+
+    followed_objects = Follow.objects.filter(user = request.user)
+    followed_fighters = []
+    for object in followed_objects:
+        followed_fighters.append(object.fighter)
+    
+    return render(request, 'upcoming_fights/rankings.html', {'fighter_ranking_list': ranking_list, 'following': followed_fighters})
+
 
 @login_required
 def follow_fighter(request):
+    scraper = UpcomingFightDataScraper()
     f_id = None
     if request.method == 'GET':
         f_id = request.GET['fighter_id']
@@ -76,11 +91,10 @@ def follow_fighter(request):
 
         if fighter:
             if fighter.is_first_follow():
-                fighter.new_follow_find_upcoming_fight()
+                scraper.find_upcoming_fight(fighter)
             Follow.objects.get_or_create(user = request.user, fighter = fighter)
             fighter.followers += 1
             fighter.save()
-
 
     return HttpResponse()
 

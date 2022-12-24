@@ -18,13 +18,15 @@ import dj_database_url
 #env = environ.Env()
 #environ.Env.read_env()
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -32,10 +34,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 ALLOWED_HOSTS = ['www.mmafollow.com', 'mmafollow.com', 'mma-project.herokuapp.com', '127.0.0.1']
-CSRF_TRUSTED_ORIGINS = ['https://www.mmafollow.com', 'https://mmafollow.com']
+#CSRF_TRUSTED_ORIGINS = ['https://www.mmafollow.com', 'https://mmafollow.com']
 
 
 # Application definition
@@ -146,7 +146,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATICFILES_DIRS = []
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static/'),]
 STATIC_URL = 'static/'
 
 # Default primary key field type

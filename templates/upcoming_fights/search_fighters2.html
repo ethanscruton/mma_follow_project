@@ -18,9 +18,8 @@
                 <tr>
                     <th scope="col" style="width: 5%"></th>
                     <th scope="col">Fighter</th>
-                    <th scope="col">Weight Class</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">Association</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Record</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,11 +38,10 @@
                                 </button>
                             {% endif %}
                         <td>
-                            <a href="https://www.sherdog.com/fighter/{{ f.fighter_id }}" target="_blank">{{ f.name }}</a>
+                            <a href="http://www.ufcstats.com/fighter-details/{{ f.fighter_id }}" target="_blank">{{ f.name }}</a>
                         </td>
-                        <td>{{ f.weight_class }}</td>
-                        <td>{{ f.country }}</td>
-                        <td>{{ f.association }}</td>
+                        <td>{{ f.weight }}</td>
+                        <td>{{ f.wins }}-{{ f.losses }}-{{ f.draws }}</td>
                     </tr>
                 {% endfor %}
             </tbody

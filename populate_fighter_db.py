@@ -6,24 +6,9 @@ import django
 django.setup()
 
 import pandas as pd
-from upcoming_fights.models import Fighter
+from upcoming_fights.models import FighterRankingDataScraper
 
-tapology_data = pd.read_pickle('upcoming_fights/complete_sherdog_fighter_data.pkl')
-tapology_data = tapology_data.drop_duplicates(subset=['Fighter ID'])
+scraper = FighterRankingDataScraper()
 
-row_iter = tapology_data.iterrows()
+scraper.update_fighter_rankings()
 
-fighters = [
-    Fighter(
-        fighter_id = row['Fighter ID'],
-        name = row['Fighter Name'],
-        nickname = row['Fighter Nickname'],
-        height = row['Height'],
-        weight_class = row['Weight Class'],
-        association = row['Association'],
-        country = row['Country']
-    )
-    for index, row in row_iter
-]
-
-Fighter.objects.bulk_create(fighters)

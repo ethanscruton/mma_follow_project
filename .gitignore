@@ -1,5 +1,5 @@
-'.env'
-'*.pyc'
+.env
+*.pyc
 *.log
 *.pot
 __pycache__

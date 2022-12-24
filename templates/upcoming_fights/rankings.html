@@ -1,0 +1,52 @@
+{% extends "upcoming_fights/base.html" %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'upcoming_fights/style.css' %}">
+
+{% block body_block %}
+    {% if user.is_authenticated %}
+
+        {% for rank_list in fighter_ranking_list %}
+
+            <table class="table">
+                <caption align="top"> {{ rank_list.1.ranking_list.list_name }} </caption>
+                <thead class = "table-dark">
+                    <tr>
+                        <th scope="col" style="width: 5%"></th>
+                        <th scope="col" style="width: 5%">Rank</th>
+                        <th scope="col">Fighter</th>
+                        <th scope="col">Record</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rank in rank_list %}
+                        <tr>
+                            <td>
+                                {% if rank.fighter in following %}
+                                    <button id="unfollow-btn-{{ rank.fighter.fighter_id }}" data-fid="{{ rank.fighter.fighter_id }}"
+                                        class="unfollow-btn btn btn-danger btn-sm" type="button" style="color:white">
+                                        unfollow
+                                    </button>                            
+                                {% else %}
+                                    <button id="follow-btn-{{ rank.fighter.fighter_id }}" data-fid="{{ rank.fighter.fighter_id }}"
+                                        class="follow-btn btn btn-info btn-sm" type="button" style="color:white">
+                                        follow
+                                    </button>
+                                {% endif %}
+                            <td>
+                                {% if rank.rank == 0 %}
+                                    C
+                                {% else %}
+                                    {{ rank.rank }} 
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="http://www.ufcstats.com/fighter-details/{{ rank.fighter.fighter_id }}" target="_blank">{{ rank.fighter.name }}</a>
+                            </td>
+                            <td>{{ rank.fighter.wins }}-{{ rank.fighter.losses }}-{{ rank.fighter.draws }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody
+            </table>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

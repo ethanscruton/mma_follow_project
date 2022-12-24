@@ -9,7 +9,7 @@
                 <th scope="col">Fighter</th>
                 <th scope="col">Opponent</th>
                 <th scope="col">Date</th>
-                <th scope="col">Promotion</th>
+                <th scope="col">Card</th>
                 <!--<th scope="col">Location</th>-->
             </tr>
         </thead>
@@ -23,14 +23,14 @@
                         </button>
                     </td>
                     <td>
-                        <a href="https://www.sherdog.com/fighter/{{ f.fighter_id }}" target="_blank">{{ f.name }}</a>
+                        <a href="http://www.ufcstats.com/fighter-details/{{ f.fighter_id }}" target="_blank">{{ f.name }}</a>
                     </td>
                     {% if f.upcoming_fight %}
                         {% for u in upcoming_fights %}
                             {% if u.fighter == f %}
-                                <td><a href="https://www.sherdog.com/fighter/{{ u.opponent.fighter_id }}" target="_blank">{{ u.opponent.name }}</a></td>
+                                <td><a href="http://www.ufcstats.com/fighter-details/{{ u.opponent.fighter_id }}" target="_blank">{{ u.opponent.name }}</a></td>
                                 <td>{{ u.date|date:"m/d/y" }}</td>
-                                <td>{{ u.promotion }}</td>    
+                                <td>{{ u.event }}</td>    
                                 <!--<td>{{ u.location }}  -->                      
                             {% endif %}
                         {% endfor %}

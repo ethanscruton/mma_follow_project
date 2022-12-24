@@ -10,6 +10,7 @@
     transform: scale(1.1)
 }
 
-.test {
-    color:red;
+caption {
+    color:black;
+    font-size:large;
 }

@@ -8,4 +8,5 @@ urlpatterns = [
     path('followed-fighters/', views.followed_fighters, name='followed_fighters'),
     path('search-fighters/', views.search_fighters, name='search_fighters'),
     path('trending', views.trending_fighters, name='trending'),
+    path('fighter-rankings', views.fighter_rankings, name='fighter_rankings')
 ]
