@@ -162,6 +162,11 @@ class UpcomingFightDataScraper():
         if soup.find("tr", class_="b-fight-details__table-row_type_first"):
             fight_row = soup.find(class_="b-fight-details__table-row_type_first")
             self.__update_fighter_upcoming_fight_data(fighter, fight_row)
+        else:
+            curr_fight = fighter.get_upcoming_fight()
+            if curr_fight:
+                curr_fight.delete()
+
     
     # updates upcoming fight data
     def __update_fighter_upcoming_fight_data(self, fighter, fight_row):
